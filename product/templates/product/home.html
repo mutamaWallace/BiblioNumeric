@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Acceuil{% endblock %}
+{% block head %}Acceuil{% endblock%}
+{% block titre %}BiblioNumerique{% endblock %} 
+{% block search %} 
+<form method="get">
+  {% csrf_token %}
+   {% comment %} <div class="search-box">
+    <input type="text"  placeholder="Search..." name="Search" id="Search " >
+    <a ><button name="" class='bx bx-search' ></button> </a>
+  </div> {% endcomment %}
+</form>{% endblock %}
+{% block content %} 
+{% comment %} 
+<div class="table-wrapper">
+  <table class="fl-table"> 
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Description</th>
+    <th>Ecrivain</th>
+    <th>Image</th>
+    <th>Emplacement</th>
+    <th>Operation</th>
+    {% if prodata %}
+    {% for pro in prodata %} 
+    <tr>
+      <td>{{pro.id}}</td>
+      <td>{{pro.nom}}</td>
+      <td>{{pro.description}}</td>
+      <td>{{pro.ecrivain}}</td>
+      <td>{{pro.image.url }}</td>
+      <td>{{pro.prix}} </td>
+      <td ><a href="update/{{pro.Id}}" class="btn btn-outline-success" >modifier</a> 
+        <a href="delete/{{pro.Id}}" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer cet livre?');"> Supprimer</a> 
+        </td>
+      
+      {% endfor %}
+      
+    </tr>
+    
+      
+    {% else %}
+<tr>
+  <td>Ce Livre N'existe pas</td>
+</tr>
+    {% endif %}
+         <tr>
+           <td></td>
+           <td></td>
+           <td ><a   href="{% url 'book' %}" class="btn btn-primary">voir tous</a></td></tr>
+        
+  </table>
+</div> {% endcomment %}
+
+<div style="margin-top: 50px;">
+<div class="card" style="width: 15%;position: absolute;left: 10%;">
+  <i class="fa fa-tasks fa-5x " style="text-align: center;padding: 7px;font-size: 1000%;color: #1ABC9C;"></i>  <div class="card-body">
+    <h5 class="card-title" style="text-align: center;"> Auteurs</h5>
+    <p class="card-text"style="text-align: center;font-size: 40px;"><b>{{ countAT }}</b></p>
+    <a href="{% url 'authors' %}" class="btn btn-primary" style="margin-left:55px ;">voir détail</a>
+  </div>
+</div>
+
+ <div class="card" style="position: absolute;left: 40%;width: 15%;">
+  <i  class="fa fa-users fa-5x" style="text-align: center;padding: 7px;font-size: 1000%;color: #1ABC9C;"></i>
+  <div class="card-body">
+    <h5 class="card-title" style="text-align: center;"> Partenaires</h5>
+    <p class="card-text"style="text-align: center;font-size: 40px;"><b>{{ countf }}</b></p>
+    <a href="{% url 'fournisseurs' %}" class="btn btn-primary" style="margin-left:55px ;">voir détail</a>
+  </div>
+</div>
+<div class="card" style="width: 15%;position: absolute;left: 70%;">
+  <i class="fa fa-book fa-5x " style="text-align: center;padding: 7px;font-size: 1000%;color: #1ABC9C;"></i>
+  <div class="card-body">
+    <h5 class="card-title" style="text-align: center;"> Livres </h5>
+    <p class="card-text" style="text-align: center;font-size: 40px;"><b></b></p>
+    <a href="{% url 'livres' %}" class="btn btn-primary" style="margin-left:55px ;">voir détail</a>
+  </div>
+</div>
+{% endblock %}
+
+
+
+

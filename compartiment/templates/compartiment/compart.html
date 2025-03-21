@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Compartiment{% endblock %}
+{% block head %}Compartiment{% endblock%}
+{% block titre %}Compartiment{% endblock %}
+{% block search %} 
+<form >
+   <div class="search-box">
+      <input type="text"  placeholder="Search..." name="Search">
+      <a ><button name="" class='bx bx-search' ></button> </a>
+    </div> 
+</form>{% endblock %}
+
+  {% block content %} 
+  <tr><a href="/create_compart" class="w3-button w3-blue" >Ajouter un Compartiment </a>  <i class="fa fa-plus" style="color:#61B2FB;padding-left: 5px;font-size: 14px;font-weight: 500;"></i></button>
+<div class="table-wrapper">
+    <table class="fl-table">
+    <th>Id</th>
+    <th>Nom </th>
+    <th>Nbre de livre dans un compartiment</th>
+    <th>Domaine des livres</th>
+    <th>etagere</th>
+    <th>Opération</th>
+    
+    {% if etgr_data %}
+{% for compartiment in etgr_data %}
+<tr>
+<td>{{compartiment.id}}</td>
+<td>{{compartiment.nom}}</td>
+<td>{{compartiment.nombreLivre}}</td>
+<td>{{compartiment.domaineLivre}}</td>
+<td>{{compartiment.etagere}}</td>
+<td ><a href="{% url 'update_compartiment' compartiment.id %}"  onclick="return confirm('vous voulez vraiment modifier cet compartiment ?');" class="btn btn-outline-success" >modifier</a> 
+{% comment %} <a href="delete_compart/{{compartiment.id}}" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer cet etagere ?');"> Supprimer</a> 
+</td> {% endcomment %}
+  
+  </tr>{% endfor %}
+  {% else %}
+<tr>
+  <td>Pas de donnees dans la base de donnees pour les etageres </td>
+</tr>
+{% endif %}
+{% endblock %}
+  

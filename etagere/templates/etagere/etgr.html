@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Manage Etageres{% endblock %}
+{% block head %}Etageres{% endblock%}
+{% block titre %}Manage Etageres{% endblock %}
+{% block search %} 
+<form >
+    <div class="search-box">
+      <input type="text"  placeholder="Search..." name="Search">
+      <a ><button name="" class='bx bx-search' ></button> </a>
+    </div>
+</form>{% endblock %}
+
+  {% block content %} 
+  <tr><a href="/addetagere" class="w3-button w3-blue" >Ajouter un Etagere </a>  <i class="fa fa-plus" style="color:#61B2FB;padding-left: 5px;font-size: 14px;font-weight: 500;"></i></button>
+<div class="table-wrapper">
+    <table class="fl-table">
+    <th>Id</th>
+    <th>Nom </th>
+    <th>Etat_De l'Etagere</th>
+    <th>Mobilite</th>
+    <th>taille maximal des livres percue par l'etagere</th>
+    <th>Opération</th>
+    {% if etgr_data %}
+{% for etagere in etgr_data %}
+<tr>
+<td>{{etagere.id}}</td>
+<td>{{etagere.nom}}</td>
+<td>{{etagere.etat_etagere}}</td>
+<td>{{etagere.mobilite}}</td>
+<td>{{etagere.charge_maximal}}</td>
+<td ><a href="{% url 'update_etagere' etagere.id %}" class="btn btn-outline-success" >modifier</a> 
+<a href="delete_etagere/{{etagere.id}}" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer cet etagere ?');"> Supprimer</a> 
+</td>
+  
+  </tr>{% endfor %}
+  {% else %}
+<tr>
+  <td>Pas de donnees dans la base de donnees pour les etageres </td>
+</tr>
+{% endif %}
+{% endblock %}
+  

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="../static/1.css">
+</head>
+<body>
+     <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <h2 class="hint-text"> Biblio App </h2><br>
+    <h3 class="active"> Log In </h3>
+    <div class="fadeIn first">
+    </div>
+    <form action="" method="POST">
+    {% csrf_token %}
+        <p class="error"></p>
+      <input type="text" id="login" name="mail" class="fadeIn second"  placeholder="Username">
+      <input type="password" id="password" name="psswd" class="fadeIn third"  placeholder="Password">
+      <input type="submit" name="ver" class="fadeIn fourth" value="Log In">
+    </form>
+    <div id="formFooter">
+      <a class="underlineHover" href="{% url 'registration' %}"> Create Account</a>
+    </div>
+  </div>
+</div>
+     </body>
+</html>

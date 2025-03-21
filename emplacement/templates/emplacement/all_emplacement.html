@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Manage Emplacements{% endblock %}
+{% block head %}Emplacements{% endblock%}
+{% block titre %}Manage Emplacements{% endblock %}
+{% block search %} 
+<form >
+    <div class="search-box">
+      <input type="text"  placeholder="Search..." name="Search">
+      <a ><button name="" class='bx bx-search' ></button> </a>
+    </div> 
+</form>{% endblock %}
+
+  {% block content %} 
+  <tr><a href="/create_emplacement" class="w3-button w3-blue" >Ajouter un Emplacement </a>  <i class="fa fa-plus" style="color:#61B2FB;padding-left: 5px;font-size: 14px;font-weight: 500;"></i></button>
+<div class="table-wrapper">
+    <table class="fl-table">
+    <th>Id</th>
+    <th>Position Precise</th>
+    <th>Disponibilite</th>
+    <th>Compartiment</th>
+    <th>Etagere</th>
+    <th>Opération</th>
+    {% if etgr_data %}
+   
+{% for emplacement in etgr_data %}
+<tr>
+<td>{{emplacement.id}}</td>
+<td>{{emplacement.position_precise}}</td>
+<td>{{emplacement.disponibilite}}</td>
+<td>{{emplacement.id_compartiment}}</td>
+<td>{{emplacement.id_etagere}}</td>
+<td ><a href="{% url 'update_compartimen' emplacement.id %}" onclick="return confirm('vous voulez vraiment modifier cet etagere ?');"  class="btn btn-outline-success" >modifier</a> 
+{% comment %} <a href="" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer cet etagere ?');"> Supprimer</a>  {% endcomment %}
+</td>
+  
+  </tr>{% endfor %}
+  {% else %}
+<tr>
+  <td>Pas de donnees dans la base de donnees pour les etageres </td>
+</tr>
+{% endif %}
+{% endblock %}
+  
