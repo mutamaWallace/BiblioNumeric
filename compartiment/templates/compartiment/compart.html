@@ -4,10 +4,10 @@
 {% block titre %}Compartiment{% endblock %}
 {% block search %} 
 <form >
-   <div class="search-box">
+   {% comment %} <div class="search-box">
       <input type="text"  placeholder="Search..." name="Search">
       <a ><button name="" class='bx bx-search' ></button> </a>
-    </div> 
+    </div>  {% endcomment %}
 </form>{% endblock %}
 
   {% block content %} 
@@ -20,7 +20,6 @@
     <th>Domaine des livres</th>
     <th>etagere</th>
     <th>Opération</th>
-    
     {% if etgr_data %}
 {% for compartiment in etgr_data %}
 <tr>
@@ -36,7 +35,7 @@
   </tr>{% endfor %}
   {% else %}
 <tr>
-  <td>Pas de donnees dans la base de donnees pour les etageres </td>
+  <td>Pas de donnees dans la base de donnees pour les compartiments </td>
 </tr>
 {% endif %}
 {% endblock %}

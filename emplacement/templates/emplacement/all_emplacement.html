@@ -4,10 +4,10 @@
 {% block titre %}Manage Emplacements{% endblock %}
 {% block search %} 
 <form >
-    <div class="search-box">
+    {% comment %} <div class="search-box">
       <input type="text"  placeholder="Search..." name="Search">
       <a ><button name="" class='bx bx-search' ></button> </a>
-    </div> 
+    </div>  {% endcomment %}
 </form>{% endblock %}
 
   {% block content %} 
@@ -16,7 +16,7 @@
     <table class="fl-table">
     <th>Id</th>
     <th>Position Precise</th>
-    <th>Disponibilite</th>
+    {% comment %} <th>Disponibilite</th> {% endcomment %}
     <th>Compartiment</th>
     <th>Etagere</th>
     <th>Opération</th>
@@ -26,7 +26,7 @@
 <tr>
 <td>{{emplacement.id}}</td>
 <td>{{emplacement.position_precise}}</td>
-<td>{{emplacement.disponibilite}}</td>
+{% comment %} <td>{{emplacement.disponibilite}}</td> {% endcomment %}
 <td>{{emplacement.id_compartiment}}</td>
 <td>{{emplacement.id_etagere}}</td>
 <td ><a href="{% url 'update_compartimen' emplacement.id %}" onclick="return confirm('vous voulez vraiment modifier cet etagere ?');"  class="btn btn-outline-success" >modifier</a> 

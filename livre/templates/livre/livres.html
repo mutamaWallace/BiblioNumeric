@@ -10,14 +10,10 @@
     <a ><button name="" class='bx bx-search' ></button> </a>
   </div>  
 </form>{% endblock %}
- 
 {% block content %} 
-<tr><a href="/add_book" class="w3-button w3 " style="background-color:#3B90BA;color: white;" >Ajouter un livre</a>  <i class="fa fa-plus" style="color:#83BCD8;padding-left: 5px;font-size: 14px;font-weight: 500;"></i></button>
+{% comment %} <tr><a href="/add_book" class="w3-button w3 " style="background-color:#3B90BA;color: white;" >Ajouter un livre</a>  <i class="fa fa-plus" style="color:#83BCD8;padding-left: 5px;font-size: 14px;font-weight: 500;"></i></button> {% endcomment %}
 <div class="table-wrapper">
-  
   <table class="fl-table">
-           
-  
     <th>ID</th>
     <th>Titre</th>
     <th>Langue du livre</th>
@@ -26,9 +22,9 @@
     <th>Etagere</th>
     <th>Compartiments</th>
     <th>Emplacements</th>
-    <th>Operation</th>
-    {% if book_data %}
-{% for pro in book_data %}
+    {% comment %}<th>Operation</th>{% endcomment %}
+    {% if books %}
+{% for pro in books %}
 <tr>
 <td>{{pro.id}}</td>
 <td>{{pro.titre}}</td>
@@ -40,14 +36,14 @@
 <td>{{pro.id_emplacement}} </td>
 {% comment %} <td><img src="{{pro.image.url}}" alt="" width="150px" height="150px"></td> {% endcomment %}
 {% comment %} <td>{{pro.ecrivain}}</td> {% endcomment %}
-<td ><a href="{% url 'update_book' pro.id %}" class="btn btn-outline-success" onclick="return confirm('vous voulez vraiment modifier ce Livre?');" >modifier</a> 
+{% comment %} <td ><a href="{% url 'update_book' pro.id %}" class="btn btn-outline-success" onclick="return confirm('vous voulez vraiment modifier ce Livre?');" >modifier</a> 
   <a href="delete_book/{{pro.id}}" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer ce Livre?');">Supprimer</a> 
-</td>
+</td>{% endcomment %}
 </tr>
 {% endfor %}
 {% else %}
 <tr>
-  <td>pas de livres</td>
+  <td>Ce Livre N'existe pas</td>
 </tr>
 </table>{% endif %}
 {% endblock %}

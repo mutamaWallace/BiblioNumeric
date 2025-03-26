@@ -13,6 +13,16 @@
     </div>
     <form action="" method="POST">
     {% csrf_token %}
+    {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" aria-label="Close" onclick="this.parentElement.style.display='none';">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endfor %}
+  {% endif %}
         <p class="error"></p>
       <input type="text" id="login" name="mail" class="fadeIn second"  placeholder="Username">
       <input type="password" id="password" name="psswd" class="fadeIn third"  placeholder="Password">

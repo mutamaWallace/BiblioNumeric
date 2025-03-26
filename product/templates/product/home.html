@@ -57,7 +57,7 @@
   <i class="fa fa-tasks fa-5x " style="text-align: center;padding: 7px;font-size: 1000%;color: #1ABC9C;"></i>  <div class="card-body">
     <h5 class="card-title" style="text-align: center;"> Auteurs</h5>
     <p class="card-text"style="text-align: center;font-size: 40px;"><b>{{ countAT }}</b></p>
-    <a href="{% url 'authors' %}" class="btn btn-primary" style="margin-left:55px ;">voir détail</a>
+    <a href="/all_authors" class="btn btn-primary" style="margin-left:55px ;">voir détail</a>
   </div>
 </div>
 
@@ -73,8 +73,8 @@
   <i class="fa fa-book fa-5x " style="text-align: center;padding: 7px;font-size: 1000%;color: #1ABC9C;"></i>
   <div class="card-body">
     <h5 class="card-title" style="text-align: center;"> Livres </h5>
-    <p class="card-text" style="text-align: center;font-size: 40px;"><b></b></p>
-    <a href="{% url 'livres' %}" class="btn btn-primary" style="margin-left:55px ;">voir détail</a>
+    <p class="card-text" style="text-align: center;font-size: 40px;"><b>{{countd}}</b></p>
+    <a href="/allbooks" class="btn btn-primary" style="margin-left:55px ;">voir détail</a>
   </div>
 </div>
 {% endblock %}

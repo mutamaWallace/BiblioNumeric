@@ -6,7 +6,7 @@ class FournForm(ModelForm):
         model =Fourn
         fields ='__all__'
         widgets = {
-            'Nom': forms.TextInput(attrs={'placeholder': 'Nom'}),
+            'Nom': forms.TextInput(attrs={'placeholder': 'Nom du fournisseur'}),
             'Tel':forms.TextInput(attrs={'placeholder':'Telephone'}),
             'Adresse':forms.TextInput(attrs={'placeholder':'adresse'}),
             'Cin':forms.TextInput(attrs={'placeholder':'Cin'}),

@@ -1,11 +1,9 @@
 
-from ast import NameConstant
-from django.shortcuts import render,redirect, get_object_or_404
+# from ast import NameConstant
+from django.shortcuts import render,redirect
 from .models import Livre
 from .forms import LivreForm
 # Create your views here.
-
-
 # def all_book(request):
 #       empla_data=Livre.objects.all()
 #       if 'Search' in request.GET:
@@ -19,9 +17,6 @@ from .forms import LivreForm
 #       countdt = Livre.objects.count()
 #       return render(request,"emplacement/all_emplacement.html",{'etgr_data':empla_data,'countdt': countdt})
 
-
-
-  
 def all_book(request):
       book_data=Livre.objects.all()
       if 'Search' in request.GET:
@@ -34,8 +29,21 @@ def all_book(request):
 
       countd = Livre.objects.count()
       return render(request,"livre/all_book.html",{'book_data':book_data,'countdt': countd})
-  
-  
+
+
+
+def tous_livres(request):
+      books=Livre.objects.all()
+      if 'Search' in request.GET: 
+            Search=request.GET['Search']
+            if Search=="":
+                  books
+            else:
+                  books=Livre.objects.filter(titre = Search, auteur= Search)
+
+      # countd = Livre.objects.count(),'countdt': countd
+      return render(request,"livre/livres.html",{'books':books})
+
 def create_livre(request):
       form=LivreForm
       if request.method == 'POST':
@@ -56,7 +64,6 @@ def create_livre(request):
 #             return redirect('/emplacements')  # 4
 #       else:
 #        return render(request,"emplacement/update_emplacement.html",{'form':form})
-   
    
    
 # def update_compartimelivre(request,id):
@@ -82,16 +89,10 @@ def update_book(request,pk):
       else:
        return render(request,"livre/update_book.html",{'form':form})   
 
-
-
-
 # def delete_emplacement(request,Id):
 #       aut_data=Livre.objects.get(id=Id)
 #       aut_data.delete()
 #       return redirect('/livres')
-
-
-
 
 def delete_livre(request,Id):
       aut_data=Livre.objects.get(id=Id)

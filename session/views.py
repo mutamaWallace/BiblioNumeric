@@ -19,14 +19,13 @@ def conx(request):
         passwod = request.POST['psswd']
         user = authenticate(username=email,password=passwod)
         if user is not None:
-            
                 login(request, user)
                 request.session['username'] = email
                 name = request.session['username']
                 
-                #context = {
-                   # 'name' : name
-               # }
+            #     context = {
+            #        'name' : name
+            #    }
                 return redirect('/home',name)
         else:
             messages.error(request,"Vous n'etes pas reconnus")
@@ -34,16 +33,33 @@ def conx(request):
 
     return render (request,"session.html")
 
+# def register(request):
+#     user = Utilisateur()
+#     if request.method == "POST":
+#         user.name = request.POST['nom'] 
+#         user.email = request.POST['mail']
+#         user.cin = request.POST['cin']
+#         user.password = request.POST['psswd']
+#         user.save()
+#         return render(request, "session.html")
+#     return render (request,"registration.html")
+
+
+
 def register(request):
     user = Utilisateur()
+
     if request.method == "POST":
-        user.name=request.POST["name"]
-        user.email=request.POST["mail"]
-        user.cin=request.POST["cin"]
-        user.password=request.POST["psswd"]
+        user.name = request.POST.get('nom', '')  # Utilisation de get() avec valeur par défaut
+        user.email = request.POST.get('mail', '')
+        user.cin = request.POST.get('cin', '')
+        user.password = request.POST.get('psswd', '')
+
         user.save()
+
         return render(request, "session.html")
-    return render (request,"registration.html")
+
+    return render(request, "registration.html")
 
 def logout(request):
     if request.method == 'POST':

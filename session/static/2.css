@@ -10,7 +10,30 @@ body {
   font-family: "Poppins", sans-serif;
   height: 90vh;
 }
+.text-center {
+  text-align: center; /* Centre le texte */
+}
 
+.alert {
+  margin: 5px 0; /* Espacement entre les messages */
+  padding: 10px;
+  border-radius: 3px; /* Coins arrondis pour les messages */
+  position: relative; /* Position relative pour le bouton de fermeture */
+}
+
+.alert-info {
+  background-color: #d9edf7; /* Couleur de fond pour les messages d'information */
+  color: #31708f; /* Couleur du texte */
+}
+
+.close {
+  position: absolute; /* Position absolue pour la croix */
+  top: 10px;
+  right: 10px;
+  border: none; /* Pas de bordure */
+  background: transparent; /* Fond transparent */
+  cursor: pointer; /* Curseur en main */
+}
 a {
   color: #92badd;
   display:inline-block;

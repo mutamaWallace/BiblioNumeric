@@ -5,3 +5,7 @@ from django.contrib import admin
 from .models import Utilisateur
 
 admin.site.register(Utilisateur)
+
+
+class UtilisateurAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'cin', 'email','password')
