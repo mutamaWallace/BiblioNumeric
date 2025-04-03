@@ -3,7 +3,21 @@ from auteurs.models import *
 from etagere.models import *
 from compartiment.models import *
 from emplacement.models import *
-# Create your models here.    
+from django.contrib.auth.models import AbstractUser
+# from django.contrib.auth.models import User
+# Create your models here.  
+
+
+
+    
+class User(AbstractUser):
+    is_admin = models.BooleanField(default=False)
+    is_publisher = models.BooleanField(default=False)
+    is_librarian = models.BooleanField(default=False)
+    
+    class Meta:
+        swappable ='AUTH_USER_MODEL'
+      
 class Livre(models.Model):
     LANGUE_CHOICES = [
         ('FR', 'Français'),

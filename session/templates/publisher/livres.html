@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Manage Books{% endblock %}
+{% block head %}Livres{% endblock%}
+{% block titre %}TOUS Les LIVRES{% endblock %}
+{% block search %} 
+<form method="post">
+  {% csrf_token %}
+  <div class="search-box">
+    <!-- <p>Hello</p> -->
+   <input type="text"  placeholder="Search..." name="Search">
+    <a ><button name="Search" class='bx bx-search' ></button> </a>
+  </div>  
+</form>{% endblock %}
+{% block content %} 
+{% comment %} <tr><a href="/add_book" class="w3-button w3 " style="background-color:#3B90BA;color: white;" >Ajouter un livre</a>  <i class="fa fa-plus" style="color:#83BCD8;padding-left: 5px;font-size: 14px;font-weight: 500;"></i></button> {% endcomment %}
+<div class="table-wrapper">
+  <table class="fl-table">
+    <th>ID</th>
+    <th>Titre</th>
+    <th>Langue du livre</th>
+    {% comment %} <th>annee de publication</th> {% endcomment %}
+    <th>Ecrivains</th>
+    <th>Etagere</th>
+    <th>Compartiments</th>
+    <th>Emplacements</th>
+    {% comment %}<th>Operation</th>{% endcomment %}
+    {% if books %}
+{% for pro in books %}
+<tr>
+<td>{{pro.id}}</td>
+<td>{{pro.titre}}</td>
+<td>{{pro.langueLivre}}</td>
+{% comment %} <td>{{pro.annee_publication}} </td> {% endcomment %}
+<td>{{pro.auteur.nom}} {{pro.auteur.postnom}}</td>
+<td>{{pro.etagere}}</td>
+<td>{{pro.compartiment}}</td>
+<td>{{pro.id_emplacement}} </td>
+{% comment %} <td><img src="{{pro.image.url}}" alt="" width="150px" height="150px"></td> {% endcomment %}
+{% comment %} <td>{{pro.ecrivain}}</td> {% endcomment %}
+{% comment %} <td ><a href="{% url 'update_book' pro.id %}" class="btn btn-outline-success" onclick="return confirm('vous voulez vraiment modifier ce Livre?');" >modifier</a> 
+  <a href="delete_book/{{pro.id}}" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer ce Livre?');">Supprimer</a> 
+</td>{% endcomment %}
+</tr>
+{% endfor %}
+{% else %}
+<tr>
+  <td>Ce Livre N'existe pas</td>
+</tr>
+</table>{% endif %}
+{% endblock %}

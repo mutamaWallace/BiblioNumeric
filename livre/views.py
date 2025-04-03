@@ -3,6 +3,7 @@
 from django.shortcuts import render,redirect
 from .models import Livre
 from .forms import LivreForm
+
 # Create your views here.
 # def all_book(request):
 #       empla_data=Livre.objects.all()
@@ -28,8 +29,7 @@ def all_book(request):
                   book_data=Livre.objects.filter(titre = Search)
 
       countd = Livre.objects.count()
-      return render(request,"livre/all_book.html",{'book_data':book_data,'countdt': countd})
-
+      return render(request,"livre/all_book.html",{'book_data': book_data,'countdt': countd})
 
 
 def tous_livres(request):
@@ -39,10 +39,10 @@ def tous_livres(request):
             if Search=="":
                   books
             else:
-                  books=Livre.objects.filter(titre = Search, auteur= Search)
+                  books=Livre.objects.filter(titre=Search, auteur=Search)
 
-      # countd = Livre.objects.count(),'countdt': countd
-      return render(request,"livre/livres.html",{'books':books})
+      countd = Livre.objects.count()
+      return render(request,"livre/livres.html",{'books':books,'countdt': countd})
 
 def create_livre(request):
       form=LivreForm

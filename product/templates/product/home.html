@@ -1,15 +1,19 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
 {% block title %}Acceuil{% endblock %}
 {% block head %}Acceuil{% endblock%}
 {% block titre %}BiblioNumerique{% endblock %} 
+
 {% block search %} 
+
 <form method="get">
   {% csrf_token %}
-   {% comment %} <div class="search-box">
+    {% comment %} <div class="search-box">
     <input type="text"  placeholder="Search..." name="Search" id="Search " >
     <a ><button name="" class='bx bx-search' ></button> </a>
-  </div> {% endcomment %}
+  </div>  {% endcomment %}
+  
 </form>{% endblock %}
+
 {% block content %} 
 {% comment %} 
 <div class="table-wrapper">
@@ -76,7 +80,16 @@
     <p class="card-text" style="text-align: center;font-size: 40px;"><b>{{countd}}</b></p>
     <a href="/allbooks" class="btn btn-primary" style="margin-left:55px ;">voir détail</a>
   </div>
+  
 </div>
+
+
+<!-- <footer>
+  <div style="text-align: center; padding: 20px; background-color: #f1f1f1;">
+      <p>&copy; 2025 Your Name. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </div>
+</footer>  -->
 {% endblock %}
 
 

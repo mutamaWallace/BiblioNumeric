@@ -13,6 +13,15 @@ class deleteaccount(SuccessMessageMixin,generic.DeleteView):
     success_url=reverse_lazy("connexion")
 
 
+class password(SuccessMessageMixin,generic.UpdateView):
+    model=User
+    template_name='parametre/password.html'
+    fields = ['password'] 
+    
+    def get_object(self, queryset=None):
+        return self.request.user
+    success_url=reverse_lazy("connexion")
+
 
 
 

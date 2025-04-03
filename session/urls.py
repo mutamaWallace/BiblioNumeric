@@ -1,9 +1,14 @@
 from django.urls import path
-from .views import conx,register,logout
+from . import views
+from django.contrib.auth import views as auth_views
 urlpatterns=[
-    path('',conx,name='connexion'), 
-    
-    path('register',register,name='registration'), 
-    
-    path('logout',logout,name='logout'),
+    path('',views.conx,name='connexion'),
+    # librarian url's 
+    path('librarian/',views.librarian,name='librarian'), 
+    # publisher url's
+    path('publisher/',views.pubisher,name='publisher'), 
+    # admin url's
+    path('dashbord/',views.dashboard,name='dashbord'), 
+    path('register',views.register,name='registration'), 
+    path('logout',views.logout,name='logout'),
 ]

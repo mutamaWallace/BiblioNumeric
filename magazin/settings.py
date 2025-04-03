@@ -39,9 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles','product','crispy_forms','session',
     'Auteur',
-    'Fournisseur','parametre','etagere','compartiment','emplacement','livre','auteurs'
+    'Fournisseur','parametre','etagere','compartiment','emplacement','livre','auteurs','customerUser'
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# AUTH_USER_MODEL = 'customerUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,7 +131,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+# STATIC_URL = 'static/'
+
 STATIC_URL = 'static/'
+# STATICFILES_DIRS = [
+#     BASE_DIR / "magazin/static",  # Adjust the path as necessary
+# ]
+
+
 SRARICFILES_DIRS= ['static']
 MEDIA_URL= 'images/'
 
