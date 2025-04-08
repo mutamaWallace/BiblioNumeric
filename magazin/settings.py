@@ -39,7 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles','product','crispy_forms','session',
     'Auteur',
-    'Fournisseur','parametre','etagere','compartiment','emplacement','livre','auteurs','customerUser'
+    'Fournisseur',
+    'parametre',
+    'etagere',
+    'compartiment',
+    'emplacement',
+    'livre',
+    'auteurs',
+    'bibliothecaire',
+    'emprunts',
+    'etudiants',
+    'universites',
+    'campus',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # AUTH_USER_MODEL = 'customerUser'

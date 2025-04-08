@@ -53,7 +53,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 DashboardAdmin
                             </a>
-                            <div class="sb-sidenav-menu-heading">Interface</div>
+                            <div class="sb-sidenav-menu-heading">Menu</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Manage Books
@@ -62,51 +62,56 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="/all_authors">Auteurs</a>
-                                    <a class="nav-link" href="/livres">Livres</a>
+                                   
                                     <a class="nav-link" href="/etageres">Etageres</a>
                                     <a class="nav-link" href="/compart">Compartiments</a>
                                     <a class="nav-link" href="/emplacements">Emplacements</a>
+                                    <a class="nav-link" href="/livres">Livres</a>
                                 </nav>
                             </div>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Manage Librarians
+                                Manage actors of system
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Authentication
+                                        All Actors
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="#">Login</a>
-                                            <a class="nav-link" href="/register">Register</a>
-                                            <a class="nav-link" href="{% url 'password' user.pk %}">Forgot Password</a> 
+                                            <a class="nav-link" href="#">Bibliothecaires</a>
+                                            <a class="nav-link" href="#">Emprunts</a>
+                                            <a class="nav-link" href="#">Etudiants</a>
+                                            <a class="nav-link" href="#">Etrangeres</a> 
                                         </nav>
                                     </div>
-                                    {% comment %} <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                        Error
+                                   
+                                  <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                    Manage Universities
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a> {% endcomment %}
-                                    {% comment %} <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                    </a> 
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="401.html">401 Page</a>
-                                            <a class="nav-link" href="404.html">404 Page</a>
-                                            <a class="nav-link" href="500.html">500 Page</a>
+                                            <a class="nav-link" href="#">Universites</a>
+                                            <a class="nav-link" href="#">Facultes</a>
+                                            <a class="nav-link" href="#">departements</a>
+                                            <a class="nav-link" href="#">classes</a>
+                                            {% comment %} <a class="nav-link" href="404.html">404 Page</a>
+                                            <a class="nav-link" href="500.html">500 Page</a> {% endcomment %}
                                         </nav>
-                                    </div> {% endcomment %}
+                                    </div>
                                 </nav>
-                            </div>
-                         
+                            </div>                         
                             <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="charts.html">
+                            <a class="nav-link" href="">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
+                                Lecteurs
                             </a>
-                            <a class="nav-link" href="tables.html">
+                            <a class="nav-link" href="">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Tables
                             </a>
@@ -199,33 +204,32 @@
                                             <th>Titre</th>
                                             <th>Langue du livre</th>
                                             <th>Ecrivains</th>
-                                            <th> couverture du livre</th>
+                                            <th>couverture du livre</th>
                                             <th>Operations</th>
                                             <th></th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        {% if books %}
-                                        {% for pro in books %}
+                                    <tbody>
+                                        {% if book_data %}
+                                        {% for livre in book_data %}
+                                        
                                         <tr>
-                                            <td>{{pro.titre}}</td>
-                                            <td>{{pro.langueLivre}}</td>
-                                            <td>{{pro.auteur.nom}} {{pro.auteur.postnom}}</td>
-                                            <td><img alt="" width="150px" height="150px">{{pro.imagelivre}}</td>
-                                            <td ><a href="" class="btn btn-outline-success" onclick="return confirm('vous voulez vraiment modifier ce Livre?');" >View</a> </td>
+                                            <td>{{livre.titre}}</td>
+                                            <td>{{livre.langueLivre}}</td>
+                                            <td>{{livre.auteur.nom}} {{livre.auteur.postnom}}</td>
+                                            <td><img alt="" src="{{livre.imagelivre}}" width="150px" height="150px">{{livre.imagelivre}}</td>
+                                            <td ><a href="" class="btn btn-outline-success" onclick="return confirm('vous voulez vraiment voir  ce Livre?');" >View</a> </td>
                                             <td></td>
                                         </tr>
+                                        
                                         {% endfor %}
                                         {% else %}
                                         <tr>
                                             <td>
-                                                Ce Livre N'existe pas
+                                                Aucun livré trouvé
                                             </td>
                                         </tr>
                                         {% endif %}
-                                    </tfoot>
-                                    <tbody>
-                                       
                                     </tbody>
                                 </table>
                             </div>
