@@ -13,16 +13,16 @@
     </div>
     <form action="" method="POST">
     {% csrf_token %}
-    {% if messages %}
-    {% for message in messages %}
-      <div class="alert alert-info alert-dismissible fade show" role="alert">
-        {{ message }}
-        <button type="button" class="close" aria-label="Close" onclick="this.parentElement.style.display='none';">
+    {% comment %} {% if messages %} {% endcomment %}
+    {% comment %} {% for message in messages %} {% endcomment %}
+      {% comment %} <div class="alert alert-info alert-dismissible fade show" role="alert">
+        {% comment %} {{ message }} {% endcomment %}
+       {% comment %} <button type="button" class="close" aria-label="Close" onclick="this.parentElement.style.display='none';">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-    {% endfor %}
-  {% endif %}
+      </div> 
+     {% endfor %}
+  {% endif %} {% endcomment %}
         <p class="error"></p>
       <input type="text" id="login" name="username" class="fadeIn second"  placeholder="Username" required>
       <input type="password" id="password" name="psswd" class="fadeIn third"  placeholder="Password" required>

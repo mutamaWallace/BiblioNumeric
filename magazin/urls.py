@@ -31,6 +31,8 @@ urlpatterns = [
     path('',include('emplacement.urls')),
     path('',include('livre.urls')),
     path('',include('auteurs.urls')),
+    path('',include('campus.urls')),
+    path('',include('universites.urls')),
 ]
 
 if settings.DEBUG:

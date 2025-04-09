@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Niveaux{% endblock %}
+{% block head %}Niveaux{% endblock%}
+{% block titre %}Niveaux{% endblock %}
+{% block search %} 
+<form >
+   {% comment %} <div class="search-box">
+      <input type="text"  placeholder="Search..." name="Search">
+      <a ><button name="" class='bx bx-search' ></button> </a>
+    </div>  {% endcomment %}
+</form>{% endblock %}
+
+  {% block content %} 
+  <tr><a href="/addclass" class="w3-button w3-blue" >Ajouter un Niveau </a>  <i class="fa fa-plus" style="color:#61B2FB;padding-left: 5px;font-size: 14px;font-weight: 500;"></i></button>
+<div class="table-wrapper">
+    <table class="fl-table">
+    <th>Id</th>
+    <th> Classe </th>
+    <th> departement </th>
+    <th>faculte</th>
+    <th>Opération</th>
+    {% if niveau_data %}
+{% for camp in niveau_data %}
+<tr>
+<td>{{camp.id}}</td>
+<td>{{camp.niveau}}</td>
+<td>{{camp.departement}}</td>
+<td>{{camp.faculte}}</td>
+<td ><a href="{% url 'update_class' camp.id %}"  onclick="return confirm('vous voulez vraiment modifier cet departement ?');" class="btn btn-outline-success" >modifier</a> 
+<a href="delete_class/{{camp.id}}" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer cet departement ?');"> Supprimer</a> 
+</td>
+  
+  </tr>{% endfor %}
+  {% else %}
+<tr>
+  <td>Pas de donnees dans la base de donnees pour les departements </td>
+</tr>
+{% endif %}
+{% endblock %}
+  
