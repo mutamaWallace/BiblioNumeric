@@ -49,7 +49,9 @@ INSTALLED_APPS = [
     'bibliothecaire',
     'emprunts',
     'etudiants',
-    'universites',
+    'universite',
+    'Etrangere',
+    'Abonnement',
     'campus',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
