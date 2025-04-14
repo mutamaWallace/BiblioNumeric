@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Etrangere{% endblock %}
+{% block head %}Etrangere{% endblock%}
+{% block titre %}Etrangere{% endblock %}
+{% block search %} 
+<form >
+   {% comment %} <div class="search-box">
+      <input type="text"  placeholder="Search..." name="Search">
+      <a ><button name="" class='bx bx-search' ></button> </a>
+    </div>  {% endcomment %}
+</form>{% endblock %}
+
+  {% block content %} 
+  <tr><a href="/add_etrangere" class="w3-button w3-blue" >Ajouter un Etrangere </a>  <i class="fa fa-plus" style="color:#61B2FB;padding-left: 5px;font-size: 14px;font-weight: 500;"></i></button>
+    <tr><a href="/home" class="w3-button w3-blue" >Retour au dashboard </a>  <i class="" style="color:#61B2FB;padding-left: 5px;font-size: 14px;font-weight: 500;"></i></button>
+
+
+    <div class="table-wrapper">
+    <table class="fl-table">
+    <th>Id</th>
+    <th> Nom </th>
+    <th>Prenom</th>
+    <th>Email</th>
+    <th> Genre </th>
+    <th>CNI</th>
+    <th>Telephone</th>
+    <th> Abonnement </th>
+    <th>Opération</th>
+    {% if etranger_data %}
+{% for camp in etranger_data %}
+<tr>
+<td>{{camp.id}}</td>
+<td>{{camp.nom}}</td>
+<td>{{camp.prenom}}</td>
+<td>{{camp.email}}</td>
+<td>{{camp.genre}}</td>
+<td>{{camp.CNI}}</td>
+<td>{{camp.telephone}}</td>
+<td>{{camp.abonnement}}</td>
+
+<td ><a href="{% url 'update_etrangere' camp.pk %}"  onclick="return confirm('vous voulez vraiment modifier ces informations ?');" class="btn btn-outline-success" >modifier</a> 
+{% comment %} <a href="delete_universite/{{camp.id}}" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer cet UNIVERSITE ?');"> Supprimer</a>  {% endcomment %}
+</td>
+
+  </tr>{% endfor %}
+  {% else %}
+<tr>
+  <td>Pas de donnees dans la base de donnees pour les Etrangeres </td>
+</tr>
+{% endif %}
+{% endblock %}
+  

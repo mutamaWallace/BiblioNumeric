@@ -37,4 +37,4 @@ class Livre(models.Model):
     id_emplacement = models.ForeignKey(Emplacement, on_delete=models.CASCADE)
     
     def __str__(self):
-        return f"{self.titre} {self.langueLivre} {self.annee_publication} {self.imagelivre} {self.auteur.nom}"
+        return self.titre

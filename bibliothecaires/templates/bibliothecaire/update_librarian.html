@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Modifier un BibliothecaireBibliothecaire{% endblock %}
+{% block titre %}Modifier un BibliothecaireBibliothecaire{% endblock %}
+{% block head %}Modifier Bibliothecaire{% endblock%}
+{% load crispy_forms_tags %} 
+{% block content %} 
+<div  style="margin-left: 29%;margin-top: 3%;background-color: white;width: 600px;padding: 60px;border-radius: 30px;">
+  <h4 style="padding-bottom: 20px;text-align: center;margin-top: -8%;"> Update Bibliothecaire :</h4>
+  <form method="post">
+		{% csrf_token %}
+		{{ form|crispy }}
+        <br>
+        
+		<button type="submit" class="btn btn-success" style="width: 30%;margin-left: 32%;">Modifier</button>
+    <form>
+</div>
+  
+{% endblock %}

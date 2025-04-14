@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %} Manage Student{% endblock %}
+{% block head %}Manage Student{% endblock%}
+{% block titre %}Manage Student{% endblock %}
+{% block search %} 
+<form >
+   {% comment %} <div class="search-box">
+      <input type="text"  placeholder="Search..." name="Search">
+      <a ><button name="" class='bx bx-search' ></button> </a>
+    </div>  {% endcomment %}
+</form>{% endblock %}
+
+  {% block content %} 
+  <tr><a href="/add_student" class="w3-button w3-blue" >Ajouter un emprunt á l'étudiant </a>  <i class="fa fa-plus" style="color:#61B2FB;padding-left: 5px;font-size: 14px;font-weight: 500;"></i></button>
+    <tr><a href="/home" class="w3-button w3-blue" >Retour au dashboard </a>  <i class="" style="color:#61B2FB;padding-left: 5px;font-size: 14px;font-weight: 500;"></i></button>
+
+
+    <div class="table-wrapper">
+    <table class="fl-table">
+    <th>Id</th>
+    <th>Prenom</th>
+    <th>date_emprunt</th>
+    {% comment %} <th> Nom </th> {% endcomment %}
+    {% comment %} <th>matricule</th>
+    <th> genre </th> {% endcomment %}
+    {% comment %} <th> domicile </th> {% endcomment %}
+    {% comment %} <th>date_fin_emprunt</th> {% endcomment %}
+    <th> universite </th>
+    <th> faculte </th>
+    <th>niveau</th>
+    {% comment %} <th>departement</th> {% endcomment %}
+    <th> livre </th>
+    <th>rendu</th>
+    <th>Opération</th>
+    {% if students_data %}
+{% for camp in students_data %}
+<tr>
+<td>{{camp.id}}</td>
+{% comment %} <td>{{camp.nom}}</td> {% endcomment %}
+<td>{{camp.prenom}}</td>
+<td>{{camp.date_emprunt}}</td>
+{% comment %} <td>{{camp.matricule}}</td>
+<td>{{camp.genre}}</td>
+<td>{{camp.domicile}}</td> {% endcomment %}
+{% comment %} <td>{{camp.date_fin_emprunt}}</td> {% endcomment %}
+<td>{{camp.universite}}</td>
+<td>{{camp.faculte}}</td>
+<td>{{camp.niveau}}</td>
+{% comment %} <td>{{camp.departement}}</td> {% endcomment %}
+<td>{{camp.livre}}</td>
+<td>{{camp.rendu}}</td>
+<td ><a href="{% url 'update_student' camp.id %}"  onclick="return confirm('Etes vous vraiment sur que le livre est rendu?');" class="btn btn-outline-success" >modifier</a> 
+<!-- <a href="delete_universite/{{camp.id}}" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer cet UNIVERSITE ?');"> Supprimer</a>  -->
+</td>
+
+  </tr>{% endfor %}
+  {% else %}
+<tr>
+  <td>Pas de donnees dans la base de donnees pour les étudiants </td>
+</tr>
+{% endif %}
+{% endblock %}
+  

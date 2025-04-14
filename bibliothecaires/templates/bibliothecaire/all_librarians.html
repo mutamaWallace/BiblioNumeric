@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Bibliothecaires{% endblock %}
+{% block head %}Bibliothecaires{% endblock%}
+{% block titre %}Bibliothecaires{% endblock %}
+{% block search %} 
+<form >
+   {% comment %} <div class="search-box">
+      <input type="text"  placeholder="Search..." name="Search">
+      <a ><button name="" class='bx bx-search' ></button> </a>
+    </div>  {% endcomment %}
+</form>{% endblock %}
+
+  {% block content %} 
+  <tr><a href="/add_librarian" class="w3-button w3-blue" >Ajouter Emprunt au Bibliothecaire </a>  <i class="fa fa-plus" style="color:#61B2FB;padding-left: 5px;font-size: 14px;font-weight: 500;"></i></button>
+    <tr><a href="/home" class="w3-button w3-blue" >Retour au dashboard </a>  <i class="" style="color:#61B2FB;padding-left: 5px;font-size: 14px;font-weight: 500;"></i></button>
+
+    <div class="table-wrapper">
+    <table class="fl-table">
+    <th>Id</th>
+    <th> Nom </th>
+    <th>Prenom</th>
+    <th>Telephone</th>
+    {% comment %} <th>matricule</th>
+    <th> genre </th>
+    <th> domicile </th> {% endcomment %}
+    <th>date_emprunt</th>
+    {% comment %} <th>date_fin_emprunt</th> {% endcomment %}
+    <th> universite </th>
+    <th> livre </th>
+    <th>rendu</th>
+    <th>Opération</th>
+    {% if librarian_data %}
+{% for camp in librarian_data %}
+<tr>
+<td>{{camp.id}}</td>
+<td>{{camp.nom}}</td>
+<td>{{camp.prenom}}</td>
+<td>{{camp.telephone}}</td>
+{% comment %} <td>{{camp.matricule}}</td>
+<td>{{camp.genre}}</td>
+<td>{{camp.domicile}}</td> {% endcomment %}
+<td>{{camp.date_emprunt}}</td>
+{% comment %} <td>{{camp.date_fin_emprunt}}</td> {% endcomment %}
+<td>{{camp.universite}}</td>
+<td>{{camp.livre}}</td>
+<td>{{camp.rendu}}</td>
+<td ><a href="{% url 'update_librarian' camp.id %}"  onclick="return confirm('Etes vous vraiment sur que le livre est rendu?');" class="btn btn-outline-success" >modifier</a> 
+<!-- <a href="delete_universite/{{camp.id}}" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer cet UNIVERSITE ?');"> Supprimer</a>  -->
+</td>
+
+  </tr>{% endfor %}
+  {% else %}
+<tr>
+  <td>Pas de donnees dans la base de donnees pour les bibliothecaires </td>
+</tr>
+{% endif %}
+{% endblock %}
+  

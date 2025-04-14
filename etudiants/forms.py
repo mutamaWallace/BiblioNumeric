@@ -4,7 +4,7 @@ from .models import Etudiants
 class EtudiantsForm(ModelForm):
     class Meta:
         model =Etudiants
-        fields = ['nom','prenom','genre','matricule','domicile','date_emprunt','date_fin_emprunt','universite', 'faculte','niveau','livre']
+        fields = '__all__'
         widgets = {
             'Nom de l etudiant': forms.TextInput(attrs={'placeholder': 'Nom de l étudiant'}),
             'prenom de l etudiant ':forms.EmailInput(attrs={'placeholder':'prenom de l étudiant'}),

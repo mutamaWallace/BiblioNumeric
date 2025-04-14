@@ -46,11 +46,11 @@ INSTALLED_APPS = [
     'emplacement',
     'livre',
     'auteurs',
-    'bibliothecaire',
+    'bibliothecaires',
     'emprunts',
     'etudiants',
     'universite',
-    'Etrangere',
+    'Etrangeres',
     'Abonnement',
     'campus',
 ]

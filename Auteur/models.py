@@ -8,5 +8,6 @@ class Auteur(models.Model):
     Tel=models.IntegerField()
     Cin=models.CharField(max_length=30)
     Email=models.CharField(max_length=30)
+    
     def _str_(self):
        return self.nom
