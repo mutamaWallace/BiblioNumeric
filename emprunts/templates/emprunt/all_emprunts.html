@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% block title %}Emprunt{% endblock %}
-{% block head %}Emprunt{% endblock%}
-{% block titre %}Emprunt{% endblock %}
+{% block title %}Emprunts{% endblock %}
+{% block head %}Emprunts{% endblock%}
+{% block titre %}Emprunts{% endblock %}
 {% block search %} 
 <form >
    {% comment %} <div class="search-box">
@@ -37,7 +37,7 @@
 <td>{{camp.date_debut}}</td>
 {% comment %} <td>{{camp.date_fin_emprunt}}</td> {% endcomment %}
 <td>{{camp.livre}}</td>
-<td>{{camp.rendu}}</td>
+<td>{{ camp.rendu|yesno:"Oui,Non" }}</td>
 <td ><a href="{% url 'update_emprunt' camp.pk %}"  onclick="return confirm('Etes vous vraiment sur que le livre est rendu?');" class="btn btn-outline-success" >modifier</a> 
 <!-- <a href="delete_universite/{{camp.id}}" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer cet UNIVERSITE ?');"> Supprimer</a>  -->
 </td>

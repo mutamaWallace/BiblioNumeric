@@ -48,7 +48,7 @@
 <td>{{camp.niveau}}</td>
 {% comment %} <td>{{camp.departement}}</td> {% endcomment %}
 <td>{{camp.livre}}</td>
-<td>{{camp.rendu}}</td>
+<td>{{ camp.rendu|yesno:"Oui,Non" }}</td>
 <td ><a href="{% url 'update_student' camp.id %}"  onclick="return confirm('Etes vous vraiment sur que le livre est rendu?');" class="btn btn-outline-success" >modifier</a> 
 <!-- <a href="delete_universite/{{camp.id}}" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer cet UNIVERSITE ?');"> Supprimer</a>  -->
 </td>

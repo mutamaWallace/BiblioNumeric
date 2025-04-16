@@ -64,26 +64,20 @@ def conx(request):
 def pubisher(request):
     return render(request, 'publisher/home.html')
 
-
-
-
-
-
 # Librarian views
+
 
 def librarian(request):
     return render(request, 'librarian/home.html')
 
 
 # Admin views
-
 # Librarian views
+
+
 
 def dashboard(request):
     return render(request, 'dashboard/home.html')
-
-
-
 
 
 def register(request):

@@ -29,8 +29,8 @@
 <td>{{camp.niveau}}</td>
 
 <td>{{camp.faculte}}</td>
-<td ><a href="{% url 'update_class' camp.id %}"  onclick="return confirm('vous voulez vraiment modifier cet departement ?');" class="btn btn-outline-success" >modifier</a> 
-<a href="delete_class/{{camp.id}}" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer cet departement ?');"> Supprimer</a> 
+<td ><a href="{% url 'update_class' camp.id %}"  onclick="return confirm('vous voulez vraiment modifier cette classe ?');" class="btn btn-outline-success" >modifier</a> 
+<a href="delete_class/{{camp.id}}" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer cette class ?');"> Supprimer</a> 
 </td>
   
   </tr>{% endfor %}
