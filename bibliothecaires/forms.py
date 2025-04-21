@@ -10,7 +10,15 @@ class BibliothecaireForm(ModelForm):
             'prenom du bibliothecaire ':forms.EmailInput(attrs={'placeholder':'prenom de l étudiant'}),
             'matricule du bibliothecaire':forms.TextInput(attrs={'placeholder':'matricule de l étudiant'}),
             'Telephone du bibliothecaire':forms.TextInput(attrs={'placeholder':'Telephone de l étudiant'}),
-            
+             'date_emprunt': forms.DateInput(attrs={
+                'placeholder':'Date début emprunt',
+                'type':'date'
+            }),
+             
+              'date_fin_emprunt': forms.DateInput(attrs={
+                'placeholder':'Date fin emprunt',
+                'type':'date'
+            }),
         
         }
         

@@ -6,9 +6,16 @@ class EmpruntForm(ModelForm):
         model =Emprunt
         fields = '__all__'
         widgets = {
-            'date_debut': forms.TextInput(attrs={'placeholder': 'date debut emprunt'}),
-            'date_fin ':forms.EmailInput(attrs={'placeholder':'date fin emprunt'}),
-        
+            'date_debut': forms.DateInput(attrs={
+                'placeholder':'Date début emprunt',
+                'type':'date'
+            }),
+             'date_fin_emprunt': forms.DateInput(attrs={
+                'placeholder':'Date fin emprunt',
+                'type':'date'
+            }),    
         }
-        
+
+
+
      

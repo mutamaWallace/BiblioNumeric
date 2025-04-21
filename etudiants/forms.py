@@ -10,6 +10,17 @@ class EtudiantsForm(ModelForm):
             'prenom de l etudiant ':forms.EmailInput(attrs={'placeholder':'prenom de l étudiant'}),
             'matricule de l etudiant':forms.TextInput(attrs={'placeholder':'matricule de l étudiant'}),
             'domicile de l etudiant':forms.TextInput(attrs={'placeholder':'domicile de l étudiant'}),
+        
+           'date_emprunt': forms.DateInput(attrs={
+                'placeholder':'Date début emprunt',
+                'type':'date'
+            }),
+             
+              'date_fin_emprunt': forms.DateInput(attrs={
+                'placeholder':'Date fin emprunt',
+                'type':'date'
+            }),
+        
         }
         
      
