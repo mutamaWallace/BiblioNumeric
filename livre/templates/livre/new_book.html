@@ -5,14 +5,21 @@
 {% load crispy_forms_tags %} 
 {% block content %} 
 <div  style="margin-left: 29%;margin-top: 3%;background-color: white;width: 600px;padding: 60px;border-radius: 30px;">
-  <h4 style="padding-bottom: 20px;text-align: center;margin-top: -8%;"> Ajouter livre :</h4>
+  <h4 style="padding-bottom: 20px; text-align: center; margin-top: -8%;">Ajouter livre :</h4>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}" role="alert">
+          {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
 
   <form method="post" enctype="multipart/form-data">
-		{% csrf_token %}
-		{{ form|crispy }}
-        <br> 
-		<button type="submit" class="btn btn-primary" style="width: 30%;margin-left: 32%;">Enregister</button>
-    <form>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <br> 
+    <button type="submit" class="btn btn-primary" style="width: 30%; margin-left: 32%;">Enregistrer</button>
+  </form>
 </div>
-  
 {% endblock %}

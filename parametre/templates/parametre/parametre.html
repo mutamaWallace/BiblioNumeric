@@ -24,14 +24,8 @@
              {{ field.errors }}
            </div>
         {% endif %}
-    
-
-
     <button type="submit" class="btn btn-primary" style="width: 40%;margin-left: 30%;margin-top: 40px;">Change Password</button>
-    
 </form>
-
 <a href="{% url 'del' user.id%}" class="btn btn-outline-danger" style="width: 40%;margin-left: 30%;margin-top: 40px;">Delete Account</a>
 </div>
-
 {% endblock%}

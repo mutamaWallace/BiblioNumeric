@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import *
+from . views import *
 urlpatterns=[
     path('home',home,name='product'),
     path('books',book,name='book'),

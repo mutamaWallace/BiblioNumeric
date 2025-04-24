@@ -9,5 +9,8 @@ class Auteurs(models.Model):
     postnom = models.CharField(max_length=30)
     CNI=models.CharField(max_length=30)
     Email=models.CharField(max_length=30)
+    
+    
     def _str_(self):
-       return self.nom
+        
+       return self.prenom

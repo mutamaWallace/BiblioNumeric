@@ -7,10 +7,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout as logouts
 from django.contrib import auth,messages
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
- 
+
 
 def conx(request):
     
@@ -18,7 +18,7 @@ def conx(request):
         email = request.POST['username']
         passwod = request.POST['psswd']
         user = authenticate(username=email,password=passwod)
-        if user is not None  and User.is_active :
+        if user is not None :
             auth.login(request, user)
             # if User.is_admin or User.is_superuser:
             #     return redirect('/home')
@@ -28,37 +28,10 @@ def conx(request):
             #     return redirect('/pubisher')
         return redirect('/home')
     else:
-        messages.error(request, 'invalid username or password')
+        # messages.error(request, 'invalid username or password')
         return render (request,"session.html")
 
         
-        
-                
-                
-            #  auth.login(request, user)
-               
-            #  request.session['username'] = email
-            #  name = request.session['username']
-                
-            #     context = {
-            #        'name' : name
-            #    }
-                # return redirect('/home',name)
-
-        # else:
-        #     messages.error(request,"Vous n'etes pas reconnus")
-        #     return render(request, "session.html")
-# def register(request):
-#     user = Utilisateur()
-#     if request.method == "POST":
-#         user.name = request.POST['nom'] 
-#         user.email = request.POST['mail']
-#         user.cin = request.POST['cin']
-#         user.password = request.POST['psswd']
-#         user.save()
-#         return render(request, "session.html")
-#     return render (request,"registration.html")
-
 # Publisher views
 
 def pubisher(request):
@@ -76,8 +49,15 @@ def librarian(request):
 
 
 
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
+
+@login_required
 def dashboard(request):
-    return render(request, 'dashboard/home.html')
+    if not request.user.has_perm('product.dashboard'):
+        return HttpResponseForbidden("Vous n'avez pas la permission d’accéder au tableau de bord.")
+
+
 
 
 def register(request):
