@@ -26,4 +26,6 @@ sqlparse==0.4.2
 tzdata==2022.1
 urllib3==1.26.9
 virtualenv==20.14.1
+django-filter
 virtualenv-clone==0.5.7
+drf-spectacular drf-spectacular-sidecar

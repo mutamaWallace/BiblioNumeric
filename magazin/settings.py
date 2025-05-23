@@ -53,6 +53,12 @@ INSTALLED_APPS = [
     'Etrangeres',
     'Abonnement',
     'campus',
+    'livreAPI',
+    'rest_framework',
+    'django_filters',
+    'drf_spectacular',
+    'drf_spectacular_sidecar',
+
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # AUTH_USER_MODEL = 'customerUser'
@@ -86,7 +92,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'magazin.wsgi.application'
-
+ 
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -177,5 +183,33 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',  # 👈 important
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
+}
+
+
+REST_FRAMEWORK = {
+    'URL_FIELD_NAME': None,
+    # ... autres paramètres
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Ma Bibliothèque API',
+    'DESCRIPTION': 'Documentation de l\'API pour Ma Bibliothèque',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_SETTINGS': {
+        'docExpansion': 'none',
+        'defaultModelRendering': 'example',
+        'displayRequestDuration': True,
+    },
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS' :[
+        'django_filters.rest_framework.DjangoFilterBackend',
+         'rest_framework.filters.SearchFilter'
+    
+    ]
 }
 

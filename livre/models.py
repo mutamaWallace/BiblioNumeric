@@ -30,7 +30,7 @@ class Livre(models.Model):
     titre = models.CharField(max_length=200)
     langueLivre = models.CharField(max_length=2, choices=LANGUE_CHOICES)
     annee_publication = models.PositiveIntegerField()
-    imagelivre = models.ImageField(upload_to='images/', default='path/to/default/image.jpg')
+    imagelivre = models.ImageField(upload_to='images/')
     auteur = models.ForeignKey(Auteurs, on_delete=models.CASCADE)
     etagere = models.ForeignKey(Etagere, on_delete=models.CASCADE)
     compartiment = models.ForeignKey(Compartiment, on_delete=models.CASCADE)

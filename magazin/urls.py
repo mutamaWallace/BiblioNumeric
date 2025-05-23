@@ -19,6 +19,18 @@ from django.conf import settings
 from django.conf.urls.static import static 
 
 
+from rest_framework import routers
+from livreAPI.urls import router as livre_router
+
+
+
+router = routers.DefaultRouter()
+router.registry.extend(livre_router.registry)
+
+
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('product.urls')),
@@ -38,6 +50,7 @@ urlpatterns = [
     path('',include('Abonnement.urls')),
     path('',include('Etrangeres.urls')),
      path('',include('emprunts.urls')),
+     path('', include(router.urls),)
 ]
 
 if settings.DEBUG:

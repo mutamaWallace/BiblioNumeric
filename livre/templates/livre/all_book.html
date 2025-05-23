@@ -15,7 +15,6 @@
 <tr><a href="/add_book" class="w3-button w3 " style="background-color:#3B90BA;color: white;" >Ajouter un livre</a>  <i class="fa fa-plus" style="color:#83BCD8;padding-left: 5px;font-size: 14px;font-weight: 500;"></i></button>
   <tr><a href="/home" class="w3-button w3-blue" >Retour au dashboard </a>  <i class="" style="color:#61B2FB;padding-left: 5px;font-size: 14px;font-weight: 500;"></i></button>
 
-
   <div class="table-wrapper">
   
   <table class="fl-table">
@@ -26,6 +25,7 @@
     <th>Langue du livre</th>
     {% comment %} <th>annee de publication</th> {% endcomment %}
     <th>Ecrivains</th>
+    <th>Images</th>
     <th>Etagere</th>
     <th>Compartiments</th>
     <th>Emplacements</th>
@@ -38,10 +38,10 @@
 <td>{{pro.langueLivre}}</td>
 {% comment %} <td>{{pro.annee_publication}} </td> {% endcomment %}
 <td>{{pro.auteur.nom}} {{pro.auteur.postnom}}</td>
+<td><img src="{{pro.imagelivre.url}}" alt="" width="150px" height="150px"></td> 
 <td>{{pro.etagere}}</td>
 <td>{{pro.compartiment}}</td>
 <td>{{pro.id_emplacement}} </td>
-{% comment %} <td><img src="{{pro.image.url}}" alt="" width="150px" height="150px"></td> {% endcomment %}
 {% comment %} <td>{{pro.ecrivain}}</td> {% endcomment %}
 <td ><a href="{% url 'update_book' pro.id %}" class="btn btn-outline-success" onclick="return confirm('vous voulez vraiment modifier ce Livre?');" >modifier</a> 
   <a href="delete_book/{{pro.id}}" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer ce Livre?');">Supprimer</a> 

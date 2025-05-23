@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <!-- {% extends "rest_framework/base.html" %} -->
+
+    {% block title %}BooksList{% endblock title %}
+
+    {% block titre %}ALL Books{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Livres</title>
+    {% comment %} {% block head %}Books{% endblock head %} {% endcomment %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        img {
+            width: 50px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Liste des Livres</h1>
+    <table>
+        <thead>
+            
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Langue</th>
+                <th>Année de Publication</th>
+                <th>Auteur</th>
+                <th>Image</th>
+                <th>Operations</th>
+                {% if livres %}
+           
+        </thead>
+        <tbody>
+            {% for livre in livres %}
+            <tr>
+                <td>{{ livre.id }}</td>
+                <td>{{ livre.titre }}</td>
+                <td>{{ livre.langueLivre }}</td>
+                <td>{{ livre.annee_publication }}</td>
+                <td>{{ livre.auteur }}</td>
+                <td><img src="{{ livre.imagelivre }}" alt="{{ livre.titre }}"></td>
+                <td ><a href="{% url 'update' pro.id %}" class="btn btn-outline-success" >modifier</a> 
+                    <a href="delete/{{pro.id}}" class="btn btn-outline-danger" onclick="return confirm('vous voulez vraiment supprimer ce Livre?');">Supprimer</a> 
+                  </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+<tr>
+  <td>Ce Livre N'existe pas</td>
+</tr>
+        </tbody>
+    </table>{% endif %}
+</body>
+</html>
